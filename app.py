@@ -2,7 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-
+import keras
 # ── Page Config ──────────────────────────────────────────
 st.set_page_config(
     page_title="🚗 Vehicle Classifier",
@@ -13,7 +13,7 @@ st.set_page_config(
 # ── Model Load ───────────────────────────────────────────
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("cars_cnn.keras")
+    model = keras.models.load_model("cars_cnn.keras")
     return model
 
 model = load_model()
