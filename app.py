@@ -28,10 +28,7 @@ st.title("🚗 Vehicle Image Classifier")
 st.markdown("CNN model se koi bhi vehicle image upload karo aur result dekho!")
 st.markdown("---")
 
-uploaded_file = st.file_uploader(
-    "📂 Image upload karo (JPG, PNG, JPEG)",
-    type=["jpg", "jpeg", "png", "webp"]
-)
+uploaded_file = st.file_uploader("Image upload karo", type=["jpg", "png", "jpeg", "jfif"])
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file).convert("RGB")
