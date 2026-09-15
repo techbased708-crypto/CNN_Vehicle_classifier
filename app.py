@@ -22,6 +22,8 @@ model = load_model()
 # Kaggle dataset: mmohaiminulislam/vehicles-image-dataset
 # Alphabetical order (same as TensorFlow reads folders)
 CLASS_NAMES = ['Bus', 'Car', 'Motorcycle', 'Truck', 'Van']
+# Debug ke liye
+st.write(f"Model output classes: {predictions.shape[1]}")
 
 # ── UI ───────────────────────────────────────────────────
 st.title("🚗 Vehicle Image Classifier")
@@ -39,17 +41,14 @@ if uploaded_file is not None:
     img_array = np.array(img_resized, dtype=np.float32)
     img_array = np.expand_dims(img_array, axis=0)
 
-    # Predict
+        # Predict
     with st.spinner("🔍 Analyzing..."):
         predictions = model.predict(img_array)
-        predicted_index = np.argmax(predictions[0])
-        predicted_class = CLASS_NAMES[predicted_index]
-        confidence = np.max(predictions[0]) * 100
-
-    # Result
-    st.markdown("---")
-    st.success(f"## 🎯 Result: **{predicted_class}**")
-    st.info(f"### Confidence: **{confidence:.2f}%**")
+        num_classes = predictions.shape[1]
+        CLASS_NAMES_ADJUSTED = CLASS_NAMES[:num_classes]
+        predicted_index = int(np.argmax(predictions[0]))
+        predicted_class = CLASS_NAMES_ADJUSTED[predicted_index] if predicted_index < len(CLASS_NAMES_ADJUSTED) else f"Class {predicted_index}"
+        confidence = np.max(predictions[0]) * 100     
 
     # All class probabilities
     st.markdown("### 📊 All Predictions:")
