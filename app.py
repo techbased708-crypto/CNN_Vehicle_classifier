@@ -29,10 +29,9 @@ st.markdown("CNN model se koi bhi vehicle image upload karo aur result dekho!")
 st.markdown("---")
 
 uploaded_file = st.file_uploader(
-    "📁 Image upload karo (JPG, PNG, JPEG, JFIF)",
-    type=["jpg", "jpeg", "png", "webp", "jfif"]
+    "📂 Image upload karo (JPG, PNG, JPEG)",
+    type=["jpg", "jpeg", "png", "webp"]
 )
-
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file).convert("RGB")
