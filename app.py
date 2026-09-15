@@ -22,10 +22,7 @@ model = load_model()
 # Kaggle dataset: mmohaiminulislam/vehicles-image-dataset
 # Alphabetical order (same as TensorFlow reads folders)
 CLASS_NAMES = ['Bus', 'Car', 'Motorcycle', 'Truck', 'Van']
-# Debug ke liye
-st.write(f"Model output classes: {predictions.shape[1]}")
 
-# ── UI ───────────────────────────────────────────────────
 st.title("🚗 Vehicle Image Classifier")
 st.markdown("CNN model se koi bhi vehicle image upload karo aur result dekho!")
 st.markdown("---")
